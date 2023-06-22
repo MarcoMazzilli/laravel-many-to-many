@@ -31,6 +31,33 @@
                 value="{{old('project_name', $project->project_name)}}">
         </div>
 
+        <div class="mb-3">
+            <label for="Technologies" class="form-label d-block">Technologies</label>
+            <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+
+                @forelse ( $technologies as $technology )
+
+                <input
+                    type="checkbox"
+                    class="btn-check"
+                    id="tech{{ $technology->id }}"
+                    autocomplete="off"
+                    value="{{ $technology->id }}"
+                    name="technologies[]"
+                    @if (!$errors->any() && $project->technologies->contains($technology))
+                        checked
+                    @elseif ($errors->any() && in_array($technology->id, old('technologies', [])))
+                        checked
+                    @endif>
+                <label class="btn btn-outline-primary" for="tech{{ $technology->id }}">{{ $technology->name }}</label>
+
+                @empty
+                    <span>No technologies avaible to add</span>
+                @endforelse
+
+            </div>
+        </div>
+
         <div class="mb-3 w-25">
             <label for="type_id" class="form-label">Type</label>
             <select class="form-select" aria-label="Default select example" name="type_id" id="type_id">
