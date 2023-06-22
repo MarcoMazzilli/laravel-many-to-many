@@ -9,8 +9,17 @@
                 <label class="fw-bold" for="name">Project name</label>
                 <p id="name">{{ $project->project_name }}</p>
 
-                <label class="fw-bold" for="name">Project type</label>
-                <p id="name">{{ $project->type->name }}</p>
+                <label class="fw-bold" for="type">Project type</label>
+                <p id="type">{{ $project->type->name }}</p>
+
+                <div>
+                    <label class="fw-bold d-block" for="technology">Project technology</label>
+                    @forelse ($project->technologies as $technology )
+                    <p id="technology" class="badge text-bg-success">{{ $technology->name }}</p>
+                    @empty
+                    <p class="badge text-bg-danger">No Technology</p>
+                    @endforelse
+                </div>
 
                 <label class="fw-bold" for="description">Description</label>
                 <p  id="description"> {{ $project->description}}</p>

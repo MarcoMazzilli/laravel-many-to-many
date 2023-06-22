@@ -17,6 +17,7 @@
             <tr>
                 <th scope="col">id</th>
                 <th scope="col">project_name</th>
+                <th scope="col">Technology</th>
                 <th scope="col">Url</th>
                 <th scope="col">status</th>
                 <th scope="col">license</th>
@@ -30,6 +31,14 @@
             <tr>
                 <th scope="row">{{ $project->id }}</th>
                 <td>{{ $project->project_name }}</td>
+                <td class="w-25">
+                    @forelse ($project->technologies as $technology )
+                    <span class="badge text-bg-success">{{ $technology->name }}</span>
+                    @empty
+                    <span class="badge text-bg-danger">No Technology</span>
+                    @endforelse
+
+                </td>
                 <td>{{ $project->url }}</td>
                 <td>{{ $project->status }}</td>
                 <td>{{ $project->license }}</td>
