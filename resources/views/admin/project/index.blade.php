@@ -21,7 +21,19 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">id</th>
+                <th scope="col">
+                    <a href="{{ route('admin.orderBy', ['direction' => $direction] ) }}"
+                        class="text-black d-flex align-items-center gap-1 text-decoration-none">
+
+                        @if ($direction === 'asc')
+                        <i class="fa-solid fa-arrow-up"></i>
+                        @else
+                        <i class="fa-solid fa-arrow-down"></i>
+                        @endif
+                        <span>Id</span>
+
+                    </a>
+                </th>
                 <th scope="col">project_name</th>
                 <th scope="col">Technology</th>
                 <th scope="col">Url</th>

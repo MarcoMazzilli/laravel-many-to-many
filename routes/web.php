@@ -25,6 +25,7 @@ Route::middleware(['auth','verified'])
 ->group(function(){
     Route::get('/', [DashboardController::class , 'index'])->name('home');
     Route::resource('project', ProjectController::class);
+    Route::get('orderBy/{direction}', [ProjectController::class , 'orderBy'])->name('orderBy');
 });
 
 
