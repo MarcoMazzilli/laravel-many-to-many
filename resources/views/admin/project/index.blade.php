@@ -3,6 +3,12 @@
 @section('content')
 <div class="container-fluid p-5 overflow-auto">
 
+    @if (session('deleted'))
+        <div class="alert alert-success" role="alert">
+            {{ session('deleted') }}
+        </div>
+    @endif
+
     <div class="d-flex justify-content-end px-5">
         <div>
             {{ $projects->links() }}
@@ -32,6 +38,7 @@
                 <th scope="row">{{ $project->id }}</th>
                 <td>{{ $project->project_name }}</td>
                 <td class="w-25">
+
                     @forelse ($project->technologies as $technology )
                     <span class="badge text-bg-success">{{ $technology->name }}</span>
                     @empty
@@ -47,11 +54,7 @@
                     <a href="{{ route('admin.project.show', $project) }}" class="btn btn-success">View</a>
                     <a href="{{ route('admin.project.edit', $project) }}" class="btn btn-warning text-white">Edit</a>
                     {{-- form --}}
-                    <form class="d-inline" method="POST" action="{{ route('admin.project.destroy', $project)}}">
-                    @csrf
-                    @method('DELETE')
-                        <button type="submit"  class="btn btn-danger">Delete</button>
-                    </form>
+                    @include('admin.partials.delete-modal')
                     {{-- form --}}
                 </td>
             </tr>
