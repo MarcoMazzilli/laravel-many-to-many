@@ -34,7 +34,7 @@
 
                     </a>
                 </th>
-                <th scope="col">project_name</th>
+                <th scope="col" class="col col-4">project_name</th>
                 <th scope="col">Technology</th>
                 <th scope="col">Url</th>
                 <th scope="col">status</th>
